@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Data Dashboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f6f8fa;
+            color: #24292e;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0366d6;
+        }
+        .stat-label {
+            color: #586069;
+            margin-top: 8px;
+        }
+        .repo-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .repo-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .repo-name a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        .repo-stats {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+            color: #586069;
+        }
+        .contributor-list {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e1e4e8;
+        }
+        .contributor {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background: #f1f8ff;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .badge {
+            background: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 GitHub Repositories Dashboard</h1>
+            <p>Generated: 2026-03-20 16:25:37</p>
+            <p>Data source: GitHub API</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Repositories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">13</div>
+                <div class="stat-label">Total Contributors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">299,789</div>
+                <div class="stat-label">Total Stars</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">101,267</div>
+                <div class="stat-label">Total Forks</div>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-name">
+                <a href="https://github.com/octocat/Hello-World" target="_blank">octocat/Hello-World</a>
+            </div>
+            <div class="repo-stats">
+                <span>⭐ 3,536</span>
+                <span>🍴 5,913</span>
+                <span>⚠️ 3725 issues</span>
+                <span>�� None</span>
+            </div>
+            <div>My first repository on GitHub!</div>
+            <div class="contributor-list">
+                <strong>Top Contributors (3):</strong><br>
+
+                <div class="contributor">
+                    <a href="https://github.com/Spaceghost" target="_blank">@Spaceghost</a>
+                    <span class="badge">1 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/octocat" target="_blank">@octocat</a>
+                    <span class="badge">1 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/Cameron423698" target="_blank">@Cameron423698</a>
+                    <span class="badge">1 commits</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-name">
+                <a href="https://github.com/torvalds/linux" target="_blank">torvalds/linux</a>
+            </div>
+            <div class="repo-stats">
+                <span>⭐ 224,203</span>
+                <span>🍴 61,086</span>
+                <span>⚠️ 3 issues</span>
+                <span>�� C</span>
+            </div>
+            <div>Linux kernel source tree</div>
+            <div class="contributor-list">
+                <strong>Top Contributors (0):</strong><br>
+
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-name">
+                <a href="https://github.com/python/cpython" target="_blank">python/cpython</a>
+            </div>
+            <div class="repo-stats">
+                <span>⭐ 72,050</span>
+                <span>🍴 34,268</span>
+                <span>⚠️ 9335 issues</span>
+                <span>�� Python</span>
+            </div>
+            <div>The Python programming language</div>
+            <div class="contributor-list">
+                <strong>Top Contributors (10):</strong><br>
+
+                <div class="contributor">
+                    <a href="https://github.com/gvanrossum" target="_blank">@gvanrossum</a>
+                    <span class="badge">11275 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/vstinner" target="_blank">@vstinner</a>
+                    <span class="badge">6641 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/benjaminp" target="_blank">@benjaminp</a>
+                    <span class="badge">5877 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/birkenfeld" target="_blank">@birkenfeld</a>
+                    <span class="badge">5680 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/freddrake" target="_blank">@freddrake</a>
+                    <span class="badge">5465 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/serhiy-storchaka" target="_blank">@serhiy-storchaka</a>
+                    <span class="badge">5277 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/rhettinger" target="_blank">@rhettinger</a>
+                    <span class="badge">4567 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/pitrou" target="_blank">@pitrou</a>
+                    <span class="badge">3781 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/jackjansen" target="_blank">@jackjansen</a>
+                    <span class="badge">2978 commits</span>
+                </div>
+
+                <div class="contributor">
+                    <a href="https://github.com/loewis" target="_blank">@loewis</a>
+                    <span class="badge">2772 commits</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

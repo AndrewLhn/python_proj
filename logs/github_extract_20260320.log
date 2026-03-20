@@ -1,0 +1,20 @@
+2026-03-20 16:19:51,495 - __main__ - INFO - Starting GitHub data extraction
+2026-03-20 16:19:51,495 - __main__ - WARNING - No token provided. Rate limit: 60 requests/hour
+2026-03-20 16:19:51,608 - __main__ - INFO - API Rate Limit remaining: 60
+2026-03-20 16:19:51,608 - __main__ - INFO - Processing repository: octocat/Hello-World
+2026-03-20 16:19:51,608 - __main__ - INFO - Fetching data for repository: octocat/Hello-World
+2026-03-20 16:19:51,806 - __main__ - INFO - Fetching contributors page 1 for octocat/Hello-World
+2026-03-20 16:19:52,485 - __main__ - INFO - Fetching contributors page 2 for octocat/Hello-World
+2026-03-20 16:19:52,680 - __main__ - INFO - Successfully processed octocat/Hello-World
+2026-03-20 16:19:53,685 - __main__ - INFO - Processing repository: torvalds/linux
+2026-03-20 16:19:53,686 - __main__ - INFO - Fetching data for repository: torvalds/linux
+2026-03-20 16:19:53,937 - __main__ - INFO - Fetching contributors page 1 for torvalds/linux
+2026-03-20 16:19:54,152 - __main__ - ERROR - Error fetching contributors for torvalds/linux: 403 Client Error: Forbidden for url: https://api.github.com/repos/torvalds/linux/contributors?page=1&per_page=10
+2026-03-20 16:19:54,152 - __main__ - INFO - Successfully processed torvalds/linux
+2026-03-20 16:19:55,153 - __main__ - INFO - Processing repository: python/cpython
+2026-03-20 16:19:55,153 - __main__ - INFO - Fetching data for repository: python/cpython
+2026-03-20 16:19:55,406 - __main__ - INFO - Fetching contributors page 1 for python/cpython
+2026-03-20 16:19:56,148 - __main__ - INFO - Successfully processed python/cpython
+2026-03-20 16:19:57,151 - __main__ - INFO - Successfully extracted data for 3 repositories
+2026-03-20 16:19:57,151 - utils.data_validator - WARNING - Data quality issues found: 3 errors
+2026-03-20 16:19:57,151 - __main__ - ERROR - Data validation failed: ['Item 0: Missing extraction timestamp', 'Item 1: Missing extraction timestamp', 'Item 2: Missing extraction timestamp']
