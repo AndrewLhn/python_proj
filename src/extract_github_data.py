@@ -7,14 +7,14 @@ from datetime import datetime
 from typing import List, Dict, Any
 import sys
 
-# Добавляем путь к проекту для импорта модулей
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config.config import GITHUB_API_BASE_URL, GITHUB_TOKEN, REPOSITORIES
 from utils.s3_uploader import S3Uploader
 from utils.data_validator import DataValidator
 
-# Настройка логирования
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -31,7 +31,7 @@ class GitHubDataExtractor:
         self.token = token or GITHUB_TOKEN
         self.session = requests.Session()
         
-        # Настройка заголовков
+       
         self.headers = {
             "Accept": "application/vnd.github.v3+json",
             "User-Agent": "Python-Data-Extractor/1.0"
@@ -39,13 +39,13 @@ class GitHubDataExtractor:
         
         if self.token:
             self.headers["Authorization"] = f"token {self.token}"
-            logger.info("✅ Using authenticated GitHub API (higher rate limits)")
+            logger.info("Using authenticated GitHub API (higher rate limits)")
         else:
-            logger.warning("⚠️  No token provided. Rate limit: 60 requests/hour")
+            logger.warning(" No token provided. Rate limit: 60 requests/hour")
             logger.info("💡 Get a token at: https://github.com/settings/tokens")
     
     def make_request(self, url: str, params: dict = None) -> Dict:
-        """Универсальный метод для запросов с обработкой ошибок"""
+       
         try:
             response = self.session.get(url, headers=self.headers, params=params)
             
@@ -54,7 +54,7 @@ class GitHubDataExtractor:
                 current_time = time.time()
                 wait_time = reset_time - current_time + 5
                 
-                if wait_time > 0 and wait_time < 3600:  # Не ждем больше часа
+                if wait_time > 0 and wait_time < 3600:  
                     logger.warning(f"Rate limit reached. Waiting {wait_time:.0f} seconds...")
                     time.sleep(wait_time)
                     response = self.session.get(url, headers=self.headers, params=params)
@@ -70,7 +70,6 @@ class GitHubDataExtractor:
             return None
     
     def get_repository_data(self, repo_full_name: str) -> Dict[str, Any]:
-        """Получение данных о репозитории"""
         url = f"{self.base_url}/repos/{repo_full_name}"
         logger.info(f"Fetching: {repo_full_name}")
         
