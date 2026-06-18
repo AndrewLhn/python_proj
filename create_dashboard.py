@@ -3,14 +3,13 @@ import os
 from datetime import datetime
 
 def create_html_dashboard():
-    """Создание HTML дашборда с данными"""
     output_dir = "output"
     
     if not os.path.exists(output_dir):
         print("No output directory found.")
         return
     
-    # Находим последний JSON файл
+   
     json_files = [f for f in os.listdir(output_dir) if f.endswith('.json')]
     if not json_files:
         print("No JSON files found.")
@@ -21,8 +20,7 @@ def create_html_dashboard():
     
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    
-    # Генерируем HTML
+  
     html_content = f"""
 <!DOCTYPE html>
 <html>
@@ -117,7 +115,7 @@ def create_html_dashboard():
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 GitHub Repositories Dashboard</h1>
+            <h1> GitHub Repositories Dashboard</h1>
             <p>Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
             <p>Data source: GitHub API</p>
         </div>
@@ -152,10 +150,10 @@ def create_html_dashboard():
                 <a href="{repo.get('html_url', '#')}" target="_blank">{repo.get('full_name', 'N/A')}</a>
             </div>
             <div class="repo-stats">
-                <span>⭐ {repo.get('stargazers_count', 0):,}</span>
-                <span>🍴 {repo.get('forks_count', 0):,}</span>
-                <span>⚠️ {repo.get('open_issues_count', 0)} issues</span>
-                <span>�� {repo.get('language', 'N/A')}</span>
+                <span> {repo.get('stargazers_count', 0):,}</span>
+                <span> {repo.get('forks_count', 0):,}</span>
+                <span> {repo.get('open_issues_count', 0)} issues</span>
+                <span> {repo.get('language', 'N/A')}</span>
             </div>
             <div>{repo.get('description', 'No description')}</div>
             <div class="contributor-list">
@@ -186,7 +184,7 @@ def create_html_dashboard():
     with open(dashboard_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
-    print(f"✅ Dashboard created: {dashboard_file}")
+    print(f" Dashboard created: {dashboard_file}")
     print(f"   Open in browser: file://{os.path.abspath(dashboard_file)}")
     
     return dashboard_file
