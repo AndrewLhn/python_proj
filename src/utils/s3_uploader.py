@@ -24,7 +24,6 @@ class S3Uploader:
             logger.info("S3Uploader initialized in LOCAL mode (files saved to output/)")
     
     def validate_data_before_upload(self, data: list) -> bool:
-        """Проверка данных перед загрузкой"""
         if not data:
             logger.error("No data to upload")
             return False
@@ -42,30 +41,25 @@ class S3Uploader:
         return True
     
     def generate_file_name(self) -> str:
-        """Генерация имени файла с timestamp"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         return f"github_repos_data_{timestamp}.json"
     
     def upload_data(self, data: list) -> bool:
-        """Загрузка данных (сохраняем локально)"""
         try:
             if not self.validate_data_before_upload(data):
                 return False
             
             file_name = self.generate_file_name()
             
-            # Создаем папку output если не существует
             os.makedirs('output', exist_ok=True)
             
-            # Сохраняем JSON файл
             local_path = f"output/{file_name}"
             with open(local_path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False, default=str)
             
-            logger.info(f"✅ Data saved locally to: {local_path}")
-            logger.info(f"📊 File size: {os.path.getsize(local_path):,} bytes")
+            logger.info(f" Data saved locally to: {local_path}")
+            logger.info(f" File size: {os.path.getsize(local_path):,} bytes")
             
-            # Если нужно, пробуем загрузить в S3
             if self.use_s3:
                 try:
                     self.s3_client.put_object(
@@ -74,10 +68,10 @@ class S3Uploader:
                         Body=json.dumps(data, indent=2, default=str),
                         ContentType='application/json'
                     )
-                    logger.info(f"✅ Data also uploaded to S3: s3://{self.bucket_name}/{file_name}")
+                    logger.info(f" Data also uploaded to S3: s3://{self.bucket_name}/{file_name}")
                 except Exception as e:
-                    logger.warning(f"⚠️  S3 upload failed: {e}")
-                    logger.info("💡 Local copy is still available")
+                    logger.warning(f" S3 upload failed: {e}")
+                    logger.info(" Local copy is still available")
             
             return True
             
