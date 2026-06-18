@@ -17,7 +17,6 @@ class DataValidator:
         ]
     
     def validate_github_data(self, data: List[Dict[str, Any]]) -> Tuple[bool, List[str]]:
-        """Валидация всех данных"""
         errors = []
         
         if not isinstance(data, list):
@@ -29,22 +28,20 @@ class DataValidator:
             return False, errors
         
         for i, item in enumerate(data):
-            # Проверка структуры
             if 'repository' not in item:
                 errors.append(f"Item {i}: Missing 'repository' field")
                 continue
             
-            # Проверка extracted_at (может быть в корне или в metadata)
+           
             if 'extracted_at' not in item:
                 if 'metadata' in item and 'extracted_at' in item['metadata']:
-                    # Все хорошо, timestamp в metadata
+                    
                     pass
                 else:
                     errors.append(f"Item {i}: Missing extraction timestamp")
             
             repo = item.get('repository', {})
             
-            # Проверяем наличие id (минимальная проверка)
             if 'id' not in repo:
                 errors.append(f"Item {i}: Missing repository id")
         
@@ -57,7 +54,6 @@ class DataValidator:
         return is_valid, errors
     
     def check_data_quality_rules(self, data: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Проверки качества данных"""
         quality_report = {
             'total_repositories': len(data),
             'repos_with_description': 0,
@@ -76,7 +72,6 @@ class DataValidator:
             if repo.get('description'):
                 quality_report['repos_with_description'] += 1
             
-            # Проверяем наличие контрибьюторов
             contributors = item.get('contributors', [])
             if contributors:
                 quality_report['repos_with_contributors'] += 1
